@@ -49,7 +49,7 @@ if (lang === 'ua') {
 }
 ---
 
-<header id="main-header" class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-500 ease-in-out border-b border-white/20">
+<header id="main-header" class="fixed w-full bg-white shadow-sm z-50 transition-all duration-500 ease-in-out border-b border-gray-200">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href={t.homeLink} class="flex items-center gap-2 text-2xl font-bold text-primary">
       <img src="/images/dextor_logo.svg" alt="Dextor Logo" class="h-8 w-auto" />
@@ -85,6 +85,15 @@ if (lang === 'ua') {
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
+
+    // Изменяем прозрачность в зависимости от скролла
+    if (currentScroll <= 50) {
+      header?.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.add('bg-white', 'border-gray-200');
+    } else {
+      header?.classList.remove('bg-white', 'border-gray-200');
+      header?.classList.add('bg-white/80', 'backdrop-blur-md', 'border-white/20');
+    }
 
     if (currentScroll <= 0) {
       header?.classList.remove('-translate-y-full', 'opacity-0');
