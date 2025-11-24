@@ -65,8 +65,9 @@ if (lang === 'ua') {
     </nav>
 
     <div class="flex items-center space-x-4">
-      <a href={switchUrl} class="text-sm font-bold text-gray-600 hover:text-primary transition-colors border border-gray-300 rounded px-2 py-1">
-        {t.otherLangLabel}
+      <a href={switchUrl} class="flex items-center text-sm font-semibold border border-gray-300 rounded-full overflow-hidden">
+        <span class={`px-3 py-1.5 transition-colors ${lang === 'ua' ? 'bg-primary text-white' : 'text-gray-600 hover:bg-gray-100'}`}>UA</span>
+        <span class={`px-3 py-1.5 transition-colors ${lang === 'ru' ? 'bg-primary text-white' : 'text-gray-600 hover:bg-gray-100'}`}>RU</span>
       </a>
 
       <a href="tel:+380000000000" class="flex items-center bg-primary text-white px-5 py-2 rounded-md font-medium hover:bg-orange-600 transition-colors pulse-cta">
