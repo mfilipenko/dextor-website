@@ -65,20 +65,23 @@ const t = translations[lang];
 
     <div class="max-w-4xl mx-auto space-y-6">
       {t.rows.map(row => (
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">{row.tech}</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">{t.headers[1]}</p>
-              <p class="text-gray-900">{row.minOrder}</p>
+        <div class="bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 p-8 transform hover:-translate-y-1">
+          <h3 class="text-2xl font-bold text-primary mb-6 flex items-center">
+            <span class="w-2 h-8 bg-primary rounded-full mr-3"></span>
+            {row.tech}
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white/50 p-4 rounded-xl">
+              <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">{t.headers[1]}</p>
+              <p class="text-gray-900 font-semibold text-lg">{row.minOrder}</p>
             </div>
-            <div>
-              <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">{t.headers[2]}</p>
-              <p class="text-gray-900">{row.payment}</p>
+            <div class="bg-white/50 p-4 rounded-xl">
+              <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">{t.headers[2]}</p>
+              <p class="text-gray-900 font-semibold text-lg">{row.payment}</p>
             </div>
-            <div>
-              <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">{t.headers[3]}</p>
-              <p class="text-gray-900">{row.includes}</p>
+            <div class="bg-white/50 p-4 rounded-xl">
+              <p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">{t.headers[3]}</p>
+              <p class="text-gray-900 font-semibold text-lg">{row.includes}</p>
             </div>
           </div>
         </div>

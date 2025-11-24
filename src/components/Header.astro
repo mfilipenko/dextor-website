@@ -87,26 +87,28 @@ if (lang === 'ua') {
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
 
-    // Изменяем прозрачность в зависимости от скролла
-    if (currentScroll <= 50) {
-      header?.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-white/20');
-      header?.classList.add('bg-white', 'border-gray-200');
-    } else {
-      header?.classList.remove('bg-white', 'border-gray-200');
-      header?.classList.add('bg-white/80', 'backdrop-blur-md', 'border-white/20');
-    }
-
     if (currentScroll <= 0) {
-      header?.classList.remove('-translate-y-full', 'opacity-0');
+      header?.classList.remove('-translate-y-full', 'opacity-0', 'bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.add('bg-white', 'border-gray-200');
       return;
     }
 
+    // Show/hide header based on scroll direction
     if (currentScroll > lastScroll && !header?.classList.contains('-translate-y-full')) {
       // Scrolling down
       header?.classList.add('-translate-y-full', 'opacity-0');
     } else if (currentScroll < lastScroll && header?.classList.contains('-translate-y-full')) {
       // Scrolling up
       header?.classList.remove('-translate-y-full', 'opacity-0');
+    }
+
+    // Update background opacity based on scroll position
+    if (currentScroll <= 50) {
+      header?.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.add('bg-white', 'border-gray-200');
+    } else {
+      header?.classList.remove('bg-white', 'border-gray-200');
+      header?.classList.add('bg-white/80', 'backdrop-blur-md', 'border-white/20');
     }
 
     lastScroll = currentScroll;
