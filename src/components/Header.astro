@@ -88,8 +88,9 @@ if (lang === 'ua') {
     const currentScroll = window.scrollY;
 
     if (currentScroll <= 0) {
-      header?.classList.remove('-translate-y-full', 'opacity-0', 'bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.remove('-translate-y-full', 'opacity-0', 'bg-white/95', 'backdrop-blur-md', 'border-white/20');
       header?.classList.add('bg-white', 'border-gray-200');
+      lastScroll = currentScroll;
       return;
     }
 
@@ -102,13 +103,13 @@ if (lang === 'ua') {
       header?.classList.remove('-translate-y-full', 'opacity-0');
     }
 
-    // Update background opacity based on scroll position
+    // Update background AFTER show/hide to ensure it's applied when visible
     if (currentScroll <= 50) {
-      header?.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-white/20');
       header?.classList.add('bg-white', 'border-gray-200');
     } else {
       header?.classList.remove('bg-white', 'border-gray-200');
-      header?.classList.add('bg-white/80', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.add('bg-white/95', 'backdrop-blur-md', 'border-white/20');
     }
 
     lastScroll = currentScroll;
