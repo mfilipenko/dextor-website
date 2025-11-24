@@ -73,13 +73,13 @@ const translations = {
 const t = translations[lang];
 ---
 
-<section class="py-20 bg-white relative overflow-hidden">
+<section class="py-20 bg-white relative">
   <!-- Decorative elements -->
-  <div class="absolute top-0 right-0 w-80 h-80 bg-blue-100 rounded-full -translate-y-1/3 blur-3xl opacity-50 pointer-events-none hidden md:block"></div>
+  <div class="absolute top-0 right-0 w-80 h-80 bg-blue-100 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl opacity-50 pointer-events-none"></div>
 
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{t.title}</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-primary bg-clip-text text-transparent">{t.title}</h2>
       <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
     </div>
 
@@ -89,9 +89,9 @@ const t = translations[lang];
         <div class="absolute top-0 left-0 h-full bg-primary/20 w-full"></div>
       </div>
 
-      {t.steps.map((step) => (
+      {t.steps.map((step, index) => (
         <div class="relative flex flex-col items-center text-center group">
-          <div class="w-20 h-20 rounded-full bg-white text-primary font-bold text-2xl flex items-center justify-center mb-6 border-4 border-gray-100 shadow-lg group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10">
+          <div class="process-number w-20 h-20 rounded-full bg-white text-primary font-bold text-2xl flex items-center justify-center mb-6 border-4 border-gray-100 shadow-lg transition-all duration-300 z-10" style={`animation-delay: ${index * 0.45}s;`} data-index={index}>
             {step.num}
           </div>
           <h3 class="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
@@ -101,3 +101,34 @@ const t = translations[lang];
     </div>
   </div>
 </section>
+
+<style>
+  .process-number.animation-done {
+    @apply group-hover:border-primary group-hover:scale-110;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const numbers = entry.target.querySelectorAll('.process-number');
+          numbers.forEach((num, index) => {
+            num.classList.add('number-animated');
+            // Добавляем класс для hover эффекта после окончания анимации
+            setTimeout(() => {
+              num.classList.add('animation-done');
+            }, (index * 450) + 600); // задержка анимации + длительность анимации
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const processSection = document.querySelector('.grid.md\\:grid-cols-5');
+    if (processSection) {
+      observer.observe(processSection);
+    }
+  });
+</script>

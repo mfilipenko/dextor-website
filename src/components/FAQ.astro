@@ -71,20 +71,19 @@ const translations = {
 const t = translations[lang];
 ---
 
-<section class="py-20 bg-white relative overflow-hidden">
+<section class="py-20 bg-white relative">
   <!-- Decorative elements -->
   <div class="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-64 h-64 bg-gray-200 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
 
   <div class="container mx-auto px-4 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-primary bg-clip-text text-transparent">{t.title}</h2>
       <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-6">
       {t.faqs.map((item) => (
-        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
+        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 hover:shadow-md hover:shadow-primary/5 transition-all">
           <h3 class="text-lg font-bold mb-3 text-gray-900">{item.q}</h3>
           <p class="text-gray-600">{item.a}</p>
         </div>

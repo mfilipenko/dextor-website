@@ -59,17 +59,17 @@ const translations = {
 const t = translations[lang];
 ---
 
-<section id="fleet" class="py-20 bg-white relative overflow-hidden">
+<section id="fleet" class="py-20 bg-white relative">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{t.title}</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-gray-800 to-primary bg-clip-text text-transparent">{t.title}</h2>
       <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       <!-- MAN Manipulator -->
-      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-        <div class="h-80 bg-gray-200 relative overflow-hidden">
+      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-2" style="perspective: 1000px;">
+        <div class="h-80 bg-gray-200 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
           <!-- Placeholder for image -->
           <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('/images/man.jpg');"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -92,8 +92,8 @@ const t = translations[lang];
       </div>
 
       <!-- Bobcat Backhoe -->
-      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-        <div class="h-80 bg-gray-200 relative overflow-hidden">
+      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-2" style="perspective: 1000px;">
+        <div class="h-80 bg-gray-200 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
           <!-- Placeholder for image -->
           <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('/images/bobcat.jpg');"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
