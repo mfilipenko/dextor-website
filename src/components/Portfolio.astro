@@ -1,0 +1,42 @@
+---
+const projects = [
+  {
+    title: "Приватний будинок у Бучі",
+    desc: "Котлован під фундамент та траншеї під комунікації, планування ділянки. Використовувався екскаватор-навантажувач Bobcat B750.",
+    image: "bg-gray-200" // Placeholder class
+  },
+  {
+    title: "Котеджне містечко в Ірпені",
+    desc: "Благоустрій території: розчистка ділянок, планування під мощення, вивезення ґрунту. Задіяні Bobcat B750 та маніпулятор.",
+    image: "bg-gray-300" // Placeholder class
+  },
+  {
+    title: "Монтаж МАФів у Гостомелі",
+    desc: "Доставка і встановлення кількох МАФів маніпулятором MAN з довжиною кузова 6 м, точне позиціонування на блоки.",
+    image: "bg-gray-400" // Placeholder class
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Приклади виконаних робіт</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Реальні об'єкти та задачі, які ми успішно виконали для наших клієнтів.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class={`h-64 ${project.image} flex items-center justify-center text-gray-500`}>
+            <span>Фото об'єкту</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">{project.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

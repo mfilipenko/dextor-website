@@ -1,0 +1,121 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Наші послуги",
+    desc: "Виконуємо широкий спектр робіт для будівництва та благоустрою.",
+    manipulator: {
+      title: "Задачі для маніпулятора",
+      desc: "Ідеальне рішення для перевезення важких вантажів та їх точного встановлення без залучення додаткового крана.",
+      list: [
+        "Перевезення плит перекриття, блоків, цегли",
+        "Доставка МАФів, контейнерів, генераторів",
+        "Перевезення металоконструкцій та деревини",
+        "Навантаження/розвантаження вантажів на об’єкті",
+        "Точне встановлення вантажів у важкодоступних місцях",
+        "Монтаж бетонних кілець для септиків та колодязів"
+      ]
+    },
+    excavator: {
+      title: "Задачі для екскаватора-навантажувача",
+      desc: "Універсальна машина, що закриває питання копання, планування та навантаження за один виїзд.",
+      list: [
+        "Копання траншей для комунікацій",
+        "Риття котлованів під фундамент",
+        "Планування ділянки, підготовка під мощення",
+        "Розчистка території від ґрунту, сміття, снігу",
+        "Навантаження будівельного сміття в самоскид",
+        "Роботи на обмежених ділянках у котеджних містечках"
+      ]
+    }
+  },
+  ru: {
+    title: "Наши услуги",
+    desc: "Выполняем широкий спектр работ для строительства и благоустройства.",
+    manipulator: {
+      title: "Задачи для манипулятора",
+      desc: "Идеальное решение для перевозки тяжелых грузов и их точной установки без привлечения дополнительного крана.",
+      list: [
+        "Перевозка плит перекрытия, блоков, кирпича",
+        "Доставка МАФов, контейнеров, генераторов",
+        "Перевозка металлоконструкций и древесины",
+        "Погрузка/разгрузка грузов на объекте",
+        "Точная установка грузов в труднодоступных местах",
+        "Монтаж бетонных колец для септиков и колодцев"
+      ]
+    },
+    excavator: {
+      title: "Задачи для экскаватора-погрузчика",
+      desc: "Универсальная машина, закрывающая вопросы копания, планировки и погрузки за один выезд.",
+      list: [
+        "Копание траншей для коммуникаций",
+        "Рытье котлованов под фундамент",
+        "Планировка участка, подготовка под мощение",
+        "Расчистка территории от грунта, мусора, снега",
+        "Погрузка строительного мусора в самосвал",
+        "Работы на ограниченных участках в коттеджных городках"
+      ]
+    }
+  }
+};
+
+const t = translations[lang];
+---
+
+<section id="services" class="py-20 bg-gray-100 relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-500/5 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Manipulator Services -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center mr-3 text-sm">01</span>
+          {t.manipulator.title}
+        </h3>
+        <p class="text-gray-600 mb-6">
+          {t.manipulator.desc}
+        </p>
+        <ul class="space-y-4">
+          {t.manipulator.list.map(item => (
+            <li class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+              <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Bobcat Services -->
+      <div>
+        <h3 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center mr-3 text-sm">02</span>
+          {t.excavator.title}
+        </h3>
+        <p class="text-gray-600 mb-6">
+          {t.excavator.desc}
+        </p>
+        <ul class="space-y-4">
+          {t.excavator.list.map(item => (
+            <li class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+              <svg class="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

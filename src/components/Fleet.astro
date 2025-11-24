@@ -1,0 +1,119 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Надійна спецтехніка Dextor",
+    desc: "Власний парк техніки дозволяє нам гарантувати справність машин та оперативну подачу на об'єкт.",
+    man: {
+      title: "Кран-маніпулятор MAN",
+      specs: [
+        "Вантажопідйомність стріли до 6 т",
+        "Довжина платформи 6 м",
+        "Загальна вантажопідйомність авто 15–20 т",
+        "Підходить для плит, блоків, контейнерів"
+      ],
+      btn: "Замовити маніпулятор"
+    },
+    bobcat: {
+      title: "Екскаватор-навантажувач Bobcat",
+      specs: [
+        "Копання траншей та котлованів",
+        "Планування ділянки",
+        "Навантаження сміття та ґрунту",
+        "Маневреність на обмежених ділянках"
+      ],
+      btn: "Замовити екскаватор"
+    }
+  },
+  ru: {
+    title: "Надежная спецтехника Dextor",
+    desc: "Собственный парк техники позволяет нам гарантировать исправность машин и оперативную подачу на объект.",
+    man: {
+      title: "Кран-манипулятор MAN",
+      specs: [
+        "Грузоподъемность стрелы до 6 т",
+        "Длина платформы 6 м",
+        "Общая грузоподъемность авто 15–20 т",
+        "Подходит для плит, блоков, контейнеров"
+      ],
+      btn: "Заказать манипулятор"
+    },
+    bobcat: {
+      title: "Экскаватор-погрузчик Bobcat",
+      specs: [
+        "Копание траншей и котлованов",
+        "Планировка участка",
+        "Погрузка мусора и грунта",
+        "Маневренность на ограниченных участках"
+      ],
+      btn: "Заказать экскаватор"
+    }
+  }
+};
+
+const t = translations[lang];
+---
+
+<section id="fleet" class="py-20 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- MAN Manipulator -->
+      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="h-80 bg-gray-200 relative overflow-hidden">
+          <!-- Placeholder for image -->
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('/images/man.jpg');"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white font-bold text-xl">MAN</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold mb-4 text-gray-800">{t.man.title}</h3>
+          <ul class="space-y-3 text-gray-700 mb-8">
+            {t.man.specs.map((spec) => (
+              <li class="flex items-start">
+                <span class="text-primary mr-2 font-bold">•</span>
+                {spec}
+              </li>
+            ))}
+          </ul>
+          <a href="tel:+380000000000" class="block w-full py-4 text-center bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 border border-gray-200 hover:border-primary">
+            {t.man.btn}
+          </a>
+        </div>
+      </div>
+
+      <!-- Bobcat Backhoe -->
+      <div class="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="h-80 bg-gray-200 relative overflow-hidden">
+          <!-- Placeholder for image -->
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('/images/bobcat.jpg');"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white font-bold text-xl">Bobcat B750</div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-2xl font-bold mb-4 text-gray-800">{t.bobcat.title}</h3>
+          <ul class="space-y-3 text-gray-700 mb-8">
+            {t.bobcat.specs.map((spec) => (
+              <li class="flex items-start">
+                <span class="text-primary mr-2 font-bold">•</span>
+                {spec}
+              </li>
+            ))}
+          </ul>
+          <a href="tel:+380000000000" class="block w-full py-4 text-center bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 border border-gray-200 hover:border-primary">
+            {t.bobcat.btn}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

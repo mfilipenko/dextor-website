@@ -1,0 +1,103 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Як ми працюємо",
+    desc: "Простий та зрозумілий процес від вашого дзвінка до готового результату.",
+    steps: [
+      {
+        num: "01",
+        title: "Заявка",
+        desc: "Ви телефонуєте нам для обговорення деталей."
+      },
+      {
+        num: "02",
+        title: "Уточнення",
+        desc: "Ми уточнюємо задачі, тип вантажу, умови під’їзду та ґрунту."
+      },
+      {
+        num: "03",
+        title: "Підбір",
+        desc: "Підбираємо техніку та погоджуємо дату й час."
+      },
+      {
+        num: "04",
+        title: "Робота",
+        desc: "Техніка приїжджає на об’єкт, виконуємо роботи."
+      },
+      {
+        num: "05",
+        title: "Результат",
+        desc: "Ви приймаєте результат, оплачуєте згідно домовленостей."
+      }
+    ]
+  },
+  ru: {
+    title: "Как мы работаем",
+    desc: "Простой и понятный процесс от вашего звонка до готового результата.",
+    steps: [
+      {
+        num: "01",
+        title: "Заявка",
+        desc: "Вы звоните нам для обсуждения деталей."
+      },
+      {
+        num: "02",
+        title: "Уточнение",
+        desc: "Мы уточняем задачи, тип груза, условия подъезда и грунта."
+      },
+      {
+        num: "03",
+        title: "Подбор",
+        desc: "Подбираем технику и согласовываем дату и время."
+      },
+      {
+        num: "04",
+        title: "Работа",
+        desc: "Техника приезжает на объект, выполняем работы."
+      },
+      {
+        num: "05",
+        title: "Результат",
+        desc: "Вы принимаете результат, оплачиваете согласно договоренностям."
+      }
+    ]
+  }
+};
+
+const t = translations[lang];
+---
+
+<section class="py-20 bg-white relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 right-0 w-80 h-80 bg-blue-100 rounded-full -translate-y-1/3 blur-3xl opacity-50 pointer-events-none hidden md:block"></div>
+
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-8 relative">
+      <!-- Connecting line for desktop -->
+      <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-gray-100 -z-10 transform -translate-y-1/2 rounded-full">
+        <div class="absolute top-0 left-0 h-full bg-primary/20 w-full"></div>
+      </div>
+
+      {t.steps.map((step) => (
+        <div class="relative flex flex-col items-center text-center group">
+          <div class="w-20 h-20 rounded-full bg-white text-primary font-bold text-2xl flex items-center justify-center mb-6 border-4 border-gray-100 shadow-lg group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10">
+            {step.num}
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

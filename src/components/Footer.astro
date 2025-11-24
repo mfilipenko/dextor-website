@@ -1,0 +1,70 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+const currentYear = new Date().getFullYear();
+
+const translations = {
+  ua: {
+    desc: "Професійна оренда спецтехніки в Бучанському районі та Києві. Надійність, оперативність та чесні ціни.",
+    rights: "Всі права захищено.",
+    privacy: "Політика конфіденційності",
+    terms: "Умови використання",
+    privacyLink: "/privacy",
+    termsLink: "/terms",
+    homeLink: "/"
+  },
+  ru: {
+    desc: "Профессиональная аренда спецтехники в Бучанском районе и Киеве. Надежность, оперативность и честные цены.",
+    rights: "Все права защищены.",
+    privacy: "Политика конфиденциальности",
+    terms: "Условия использования",
+    privacyLink: "/ru/privacy",
+    termsLink: "/ru/terms",
+    homeLink: "/ru"
+  }
+};
+
+const t = translations[lang];
+---
+
+<footer id="contacts" class="bg-slate-900 text-gray-400 py-16 border-t border-slate-800 relative overflow-hidden">
+  <!-- Background image with overlay -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-slate-900/90 z-10"></div>
+    <div class="w-full h-full bg-[url('/images/footer.png')] bg-cover bg-center bg-no-repeat opacity-50"></div>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-20">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+      <div class="text-center md:text-left">
+        <a href={t.homeLink} class="flex items-center justify-center md:justify-start gap-3 text-3xl font-bold text-white mb-4 tracking-tight">
+          <img src="/images/dextor_logo.svg" alt="Dextor Logo" class="h-10 w-auto" />
+          Dextor
+        </a>
+        <p class="text-gray-400 leading-relaxed max-w-md">
+          {t.desc}
+        </p>
+      </div>
+      
+      <div>
+        <a href="tel:+380000000000" class="flex items-center group">
+          <div class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center mr-4 group-hover:bg-primary transition-colors duration-300">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          </div>
+          <span class="text-white font-bold text-2xl md:text-3xl group-hover:text-primary transition-colors duration-300">(000) 000-00-00</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <p>&copy; {currentYear} Dextor. {t.rights}</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href={t.privacyLink} class="hover:text-white transition-colors">{t.privacy}</a>
+        <a href={t.termsLink} class="hover:text-white transition-colors">{t.terms}</a>
+      </div>
+    </div>
+  </div>
+</footer>

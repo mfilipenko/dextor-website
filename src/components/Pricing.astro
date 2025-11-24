@@ -1,0 +1,94 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Умови оренди",
+    desc: "Прозорі умови співпраці. Вартість залежить від типу робіт, тривалості та відстані до об'єкта.",
+    headers: ["Техніка", "Мінімальне замовлення", "Формат оплати", "Що входить"],
+    rows: [
+      {
+        tech: "Кран-маніпулятор MAN",
+        minOrder: "від 2 годин",
+        payment: "погодинно / за зміну",
+        includes: "оператор, виконання робіт, базовий пробіг"
+      },
+      {
+        tech: "Екскаватор-навантажувач Bobcat",
+        minOrder: "від 4 годин",
+        payment: "погодинно / за зміну",
+        includes: "оператор, виконання робіт, базовий пробіг"
+      }
+    ],
+    note: "Примітка:",
+    noteText: "подача за межі стандартної зони, нічні зміни, святкові дні — розраховуються індивідуально за домовленістю."
+  },
+  ru: {
+    title: "Условия аренды",
+    desc: "Прозрачные условия сотрудничества. Стоимость зависит от типа работ, длительности и расстояния до объекта.",
+    headers: ["Техника", "Минимальный заказ", "Формат оплаты", "Что входит"],
+    rows: [
+      {
+        tech: "Кран-манипулятор MAN",
+        minOrder: "от 2 часов",
+        payment: "почасово / за смену",
+        includes: "оператор, выполнение работ, базовый пробег"
+      },
+      {
+        tech: "Экскаватор-погрузчик Bobcat",
+        minOrder: "от 4 часов",
+        payment: "почасово / за смену",
+        includes: "оператор, выполнение работ, базовый пробег"
+      }
+    ],
+    note: "Примечание:",
+    noteText: "подача за пределы стандартной зоны, ночные смены, праздничные дни — рассчитываются индивидуально по договоренности."
+  }
+};
+
+const t = translations[lang];
+---
+
+<section id="pricing" class="py-20 bg-white relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-64 h-64 bg-orange-100 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-50 hidden md:block"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full max-w-4xl mx-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            {t.headers.map(header => (
+              <th class="px-6 py-4 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          {t.rows.map(row => (
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">{row.tech}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-gray-600">{row.minOrder}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-gray-600">{row.payment}</td>
+              <td class="px-6 py-4 text-gray-600">{row.includes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 max-w-4xl mx-auto bg-blue-50 p-6 rounded-lg border border-blue-100">
+      <p class="text-blue-800 text-sm">
+        <strong>{t.note}</strong> {t.noteText}
+      </p>
+    </div>
+  </div>
+</section>

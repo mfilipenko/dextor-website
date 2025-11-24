@@ -1,0 +1,46 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	lang?: 'uk' | 'ru';
+}
+
+const { 
+	title, 
+	description = "Оренда крана-маніпулятора MAN та екскаватора-навантажувача Bobcat B750 у Гостомелі, Бучі, Ірпіні, Ворзелі та по Києву. Перевезення вантажів, земляні та навантажувальні роботи. Замовляйте виїзд техніки під ваш об’єкт.",
+	lang = 'uk'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="overflow-x-hidden w-full">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/images/dextor_logo.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="font-sans text-gray-800 bg-white overflow-x-hidden w-full relative">
+		<slot />
+	</body>
+</html>
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 80px;
+		max-width: 100vw;
+	}
+	body {
+		overflow-x: hidden;
+		max-width: 100vw;
+		position: relative;
+	}
+	* {
+		box-sizing: border-box;
+	}
+</style>

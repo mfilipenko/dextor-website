@@ -1,0 +1,102 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Географія робіт",
+    desc: "Базуємося в Гостомелі, що дозволяє нам максимально швидко прибувати на об'єкти в Бучанському районі.",
+    subtitle: "Основні населені пункти",
+    locations: [
+      "Гостомель",
+      "Буча",
+      "Ірпінь",
+      "Ворзель",
+      "Немішаєве",
+      "Бородянка",
+      "Макарів",
+      "Коцюбинське",
+      "Дмитрівка",
+      "Білогородка"
+    ],
+    note: "Також працюємо по Києву та всій області за попередньою домовленістю.",
+    mapTitle: "Оперативний виїзд",
+    mapDesc: "Ми знаємо кожну вулицю в районі, що гарантує вчасну подачу техніки."
+  },
+  ru: {
+    title: "География работ",
+    desc: "Базируемся в Гостомеле, что позволяет нам максимально быстро прибывать на объекты в Бучанском районе.",
+    subtitle: "Основные населенные пункты",
+    locations: [
+      "Гостомель",
+      "Буча",
+      "Ирпень",
+      "Ворзель",
+      "Немешаево",
+      "Бородянка",
+      "Макаров",
+      "Коцюбинское",
+      "Дмитровка",
+      "Белогородка"
+    ],
+    note: "Также работаем по Киеву и всей области по предварительной договоренности.",
+    mapTitle: "Оперативный выезд",
+    mapDesc: "Мы знаем каждую улицу в районе, что гарантирует своевременную подачу техники."
+  }
+};
+
+const t = translations[lang];
+---
+
+<section class="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+  <!-- Decorative map pattern background -->
+  <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/map-of-the-world.png')]"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+        {t.desc}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-[1.02] transition-transform duration-300">
+        <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+          <svg class="w-6 h-6 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          {t.subtitle}
+        </h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+          {t.locations.map((loc) => (
+            <div class="flex items-center p-3 bg-gray-100 rounded-lg hover:bg-primary/5 hover:text-primary transition-colors cursor-default">
+              <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
+              <span class="font-medium">{loc}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-8 pt-6 border-t border-gray-100">
+          <p class="text-gray-500 text-sm flex items-center">
+            <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            {t.note}
+          </p>
+        </div>
+      </div>
+      
+      <div class="h-[500px] bg-gray-200 rounded-2xl overflow-hidden relative shadow-2xl group">
+        <!-- Placeholder for Map - Ideally replace with an interactive Google Map or a static image of the region -->
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('/images/Bucha-map.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+          <div class="text-white">
+            <p class="font-bold text-xl mb-2">{t.mapTitle}</p>
+            <p class="text-gray-200 text-sm">{t.mapDesc}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

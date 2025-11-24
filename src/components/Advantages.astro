@@ -1,0 +1,96 @@
+---
+interface Props {
+  lang?: 'ua' | 'ru';
+}
+
+const { lang = 'ua' } = Astro.props;
+
+const translations = {
+  ua: {
+    title: "Чому обирають Dextor",
+    desc: "Ми цінуємо ваш час та гроші, тому пропонуємо найкращі умови співпраці.",
+    list: [
+      {
+        title: "Свій парк техніки",
+        description: "Працюємо без посередників, що гарантує кращу ціну та відповідальність."
+      },
+      {
+        title: "Досвідчені оператори",
+        description: "Наші фахівці мають багаторічний досвід роботи на складних об'єктах."
+      },
+      {
+        title: "Оперативний виїзд",
+        description: "Швидка подача техніки з Гостомеля по всьому Бучанському району."
+      },
+      {
+        title: "Акуратна робота",
+        description: "Дбайливо ставимося до вашої ділянки, газонів та майна сусідів."
+      },
+      {
+        title: "Гнучкі умови",
+        description: "Можливість довгострокової оренди та роботи у вихідні дні."
+      },
+      {
+        title: "Чесні ціни",
+        description: "Прозорий розрахунок вартості без прихованих платежів."
+      }
+    ]
+  },
+  ru: {
+    title: "Почему выбирают Dextor",
+    desc: "Мы ценим ваше время и деньги, поэтому предлагаем лучшие условия сотрудничества.",
+    list: [
+      {
+        title: "Свой парк техники",
+        description: "Работаем без посредников, что гарантирует лучшую цену и ответственность."
+      },
+      {
+        title: "Опытные операторы",
+        description: "Наши специалисты имеют многолетний опыт работы на сложных объектах."
+      },
+      {
+        title: "Оперативный выезд",
+        description: "Быстрая подача техники из Гостомеля по всему Бучанскому району."
+      },
+      {
+        title: "Аккуратная работа",
+        description: "Бережно относимся к вашему участку, газонам и имуществу соседей."
+      },
+      {
+        title: "Гибкие условия",
+        description: "Возможность долгосрочной аренды и работы в выходные дни."
+      },
+      {
+        title: "Честные цены",
+        description: "Прозрачный расчет стоимости без скрытых платежей."
+      }
+    ]
+  }
+};
+
+const t = translations[lang];
+---
+
+<section class="py-20 bg-white relative overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-1/2 left-1/3 w-64 md:w-[500px] h-64 md:h-[500px] bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">{t.title}</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">{t.desc}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {t.list.map((adv) => (
+        <div class="p-6 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow bg-gray-100">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 text-primary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">{adv.title}</h3>
+          <p class="text-gray-600">{adv.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
