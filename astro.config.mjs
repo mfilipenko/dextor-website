@@ -6,4 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dextor.com.ua',
   integrations: [tailwind(), sitemap()],
+  build: {
+    inlineStylesheets: 'always'
+  },
 });
