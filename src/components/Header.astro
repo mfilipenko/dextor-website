@@ -88,7 +88,7 @@ if (lang === 'ua') {
     const currentScroll = window.scrollY;
 
     if (currentScroll <= 0) {
-      header?.classList.remove('-translate-y-full', 'opacity-0', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.remove('-translate-y-full', 'opacity-0', 'backdrop-blur-md', 'border-white/20', 'bg-white');
       header?.classList.add('border-gray-200');
       if (header) {
         header.style.backgroundColor = 'rgb(255, 255, 255)';
@@ -108,13 +108,13 @@ if (lang === 'ua') {
 
     // Update background AFTER show/hide to ensure it's applied when visible
     if (currentScroll <= 50) {
-      header?.classList.remove('backdrop-blur-md', 'border-white/20');
+      header?.classList.remove('backdrop-blur-md', 'border-white/20', 'bg-white');
       header?.classList.add('border-gray-200');
       if (header) {
         header.style.backgroundColor = 'rgb(255, 255, 255)';
       }
     } else {
-      header?.classList.remove('border-gray-200');
+      header?.classList.remove('border-gray-200', 'bg-white');
       header?.classList.add('backdrop-blur-md', 'border-white/20');
       if (header) {
         header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
