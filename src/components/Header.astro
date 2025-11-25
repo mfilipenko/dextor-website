@@ -78,7 +78,6 @@ if (lang === 'ua') {
       </a>
     </div>
   </div>
-  <span class="hidden bg-white/95" aria-hidden="true"></span>
 </header>
 
 <script>
@@ -89,8 +88,11 @@ if (lang === 'ua') {
     const currentScroll = window.scrollY;
 
     if (currentScroll <= 0) {
-      header?.classList.remove('-translate-y-full', 'opacity-0', 'bg-white/95', 'backdrop-blur-md', 'border-white/20');
-      header?.classList.add('bg-white', 'border-gray-200');
+      header?.classList.remove('-translate-y-full', 'opacity-0', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.add('border-gray-200');
+      if (header) {
+        header.style.backgroundColor = 'rgb(255, 255, 255)';
+      }
       lastScroll = currentScroll;
       return;
     }
@@ -106,11 +108,17 @@ if (lang === 'ua') {
 
     // Update background AFTER show/hide to ensure it's applied when visible
     if (currentScroll <= 50) {
-      header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-white/20');
-      header?.classList.add('bg-white', 'border-gray-200');
+      header?.classList.remove('backdrop-blur-md', 'border-white/20');
+      header?.classList.add('border-gray-200');
+      if (header) {
+        header.style.backgroundColor = 'rgb(255, 255, 255)';
+      }
     } else {
-      header?.classList.remove('bg-white', 'border-gray-200');
-      header?.classList.add('bg-white/95', 'backdrop-blur-md', 'border-white/20');
+      header?.classList.remove('border-gray-200');
+      header?.classList.add('backdrop-blur-md', 'border-white/20');
+      if (header) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+      }
     }
 
     lastScroll = currentScroll;
