@@ -37,6 +37,15 @@ const {
 
 			gtag('config', 'G-DLQ1HPDYF1');
 		</script>
+
+		<!-- Binotel call tracking -->
+		<script type="text/javascript">
+			(function(d, w, s) {
+				var widgetHash = 'eit39pncqu4gsadc9lu5', ctw = d.createElement(s); ctw.type = 'text/javascript'; ctw.async = true;
+				ctw.src = '//widgets.binotel.com/calltracking/widgets/' + widgetHash + '.js';
+				var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(ctw, sn);
+			})(document, window, 'script');
+		</script>
 	</head>
 	<body class="font-sans text-gray-800 bg-white overflow-x-hidden w-full relative">
 		<slot />
